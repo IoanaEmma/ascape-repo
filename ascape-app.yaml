@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ascape-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: ascape
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ascape
+    spec:
+      containers:
+      - name: ascape
+        image: docker.io/dokeridforioana/flask-app-image:1.0.0
+        ports:
+          - containerPort: 3000
+        env:
+        - name: APPLICATION_PORT
+          value: 3000
+        - name: APPLICATION_HOST
+          value: 0.0.0.0
+        - name: APPLICATION_DB_CONTAINER
+          value: my-release-postgresql
+        - name: ENVIRONEMENT
+          value: DEV
+        - name: APPLICATION_POSTGRES_PW
+          valueFrom:
+           secretKeyRef:
+            name: postgressecret
+            key: password
+        - name: MLFLOW_S3_ENDPOINT_URL
+          value: minio-service.kubeflow:9000
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+           secretKeyRef:
+            name: miniosecret
+            key: username
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+           secretKeyRef:
+            name: miniosecret
+            key: password
+        - name: MLFLOW_TRACKING_URI
+          value: mlflow-server.local:5000       
+        resources:
+          requests:
+            cpu: "500m"
+        
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ascape-service
+spec:
+  ports:
+  - port: 3000
+    targetPort: 3000
+    name: http
+  selector:
+    app: ascape
