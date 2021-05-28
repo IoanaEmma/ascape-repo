@@ -32,7 +32,7 @@ spec:
             name: postgressecret
             key: password
         - name: MLFLOW_S3_ENDPOINT_URL
-          value: 10.152.183.89:9000
+          value: http://10.1.75.111:9000
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
            secretKeyRef:
@@ -44,7 +44,9 @@ spec:
             name: miniosecret
             key: password
         - name: MLFLOW_TRACKING_URI
-          value: 10.152.183.36:5000    
+          value: http://10.1.75.127:5000
+        - name: ML_PIPELINE_URI
+          value: http://10.1.75.118:8888/apis/v1beta1/runs
         resources:
           requests:
             cpu: "500m"
