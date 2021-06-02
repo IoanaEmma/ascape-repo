@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mlflow-deployment
-        image: dokeridforioana/mlflow-server:1.0.0
+        image: dkhundley/mlflow-server:1.0.3
         imagePullPolicy: Always
         args:
         - --host=0.0.0.0
