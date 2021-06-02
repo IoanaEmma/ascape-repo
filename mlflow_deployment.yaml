@@ -20,7 +20,7 @@ spec:
         - --host=0.0.0.0
         - --port=5000
         - --backend-store-uri=sqlite:///mlruns.db
-        - --default-artifact-root=s3://artifact-store-bucket/
+        - --default-artifact-root=s3://mlpipeline/
         - --workers=2
         env:
         - name: MLFLOW_S3_ENDPOINT_URL
