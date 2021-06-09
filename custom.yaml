@@ -9,5 +9,6 @@ spec:
   default:
     predictor:
       custom:
+        name: ascapemodel01
         container: 
           image: "dokeridforioana/ascape-predict-image:1.0.1"
