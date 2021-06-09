@@ -10,6 +10,6 @@ spec:
     predictor:
       minReplicas: 1
       custom:
-        name: 
+        name: ascape_serving
         container: 
           image: "dokeridforioana/ascape-predict-image:1.0.1"
