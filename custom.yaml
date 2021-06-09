@@ -8,8 +8,7 @@ metadata:
 spec:
   default:
     predictor:
-      minReplicas: 1
       custom:
-        name: ascape_serving
+        name: custom
         container: 
           image: "dokeridforioana/ascape-predict-image:1.0.1"
