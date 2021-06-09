@@ -12,3 +12,4 @@ spec:
         name: ascapemodel01
         container: 
           image: "dokeridforioana/ascape-predict-image:1.0.1"
+          image_pull_policy: "Always"
