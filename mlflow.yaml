@@ -18,13 +18,13 @@ spec:
         imagePullPolicy: Always
         args:
         - --host=0.0.0.0
-        - --port=5001
+        - --port=5000
         - --backend-store-uri=sqlite:///mlruns.db
         - --default-artifact-root=s3://artifact-store-bucket/
         - --workers=2
         env:
         - name: MLFLOW_S3_ENDPOINT_URL
-          value: 10.152.183.89:9000
+          value: 10.152.183.245:9000
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
            secretKeyRef:
@@ -37,7 +37,7 @@ spec:
             key: password
         ports:
         - name: http
-          containerPort: 5001
+          containerPort: 5000
           protocol: TCP
         resources:
           requests:
@@ -50,8 +50,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 5001
-      targetPort: 5001
+    - port: 5000
+      targetPort: 5000
       protocol: TCP
       name: http
   selector:
@@ -71,5 +71,5 @@ spec:
       paths:
         - backend:
             serviceName: mlflow-service
-            servicePort: 5001
+            servicePort: 5000
           path: /
