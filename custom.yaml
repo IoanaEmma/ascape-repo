@@ -11,4 +11,4 @@ spec:
       custom:
         name: ascapemodel01
         container: 
-          image: "dokeridforioana/ascape-predict-image:1.0.1"
+          image: "dokeridforioana/ascape-predict-image:1.0.2"
