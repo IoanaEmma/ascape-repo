@@ -1,0 +1,14 @@
+apiVersion: serving.kubeflow.org/v1beta1
+kind: InferenceService
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: ascapemodel01
+  namespace: kfserving-ascape
+spec:
+  default:
+    predictor:
+      custom:
+        name: ascapemodel01
+        container: 
+          image: "dokeridforioana/ascape-predict-image:1.0.2"
