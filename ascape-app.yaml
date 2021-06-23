@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ascape
-        image: docker.io/dokeridforioana/flask-app-image:1.1.9
+        image: docker.io/dokeridforioana/flask-app-image:1.1.8
         ports:
           - containerPort: 3000
         env:
