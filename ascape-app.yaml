@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ascape
-        image: docker.io/dokeridforioana/flask-app-image:1.1.8
+        image: docker.io/dokeridforioana/flask-app-image:1.1.9
         ports:
           - containerPort: 3000
         env:
@@ -46,7 +46,7 @@ spec:
         - name: MLFLOW_TRACKING_URI
           value: http://10.152.183.159:5000
         - name: ML_PIPELINE_URI
-          value: http://10.152.183.85:8888/apis/v1beta1/runs
+          value: http://10.152.183.85:8888
         resources:
           requests:
             cpu: "500m"
