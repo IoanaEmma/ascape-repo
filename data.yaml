@@ -1,0 +1,13 @@
+name: Download data
+inputs:
+- {name: Project id, type: String}
+outputs:
+- {name: data}
+metadata:
+  annotations:
+    author: Ioana Ciangau
+implementation:
+  container:
+    image: docker.io/dokeridforioana/ascape-get-data-image:1.1.0
+    fileOutputs:
+      data: ASCAPE_train_model/data.zip
