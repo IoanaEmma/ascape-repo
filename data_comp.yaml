@@ -13,3 +13,6 @@ implementation:
       data: ASCAPE_train_model/data.zip
     env:
       MLFLOW_S3_ENDPOINT_URL: http://10.152.183.91:9000/
+      AWS_ACCESS_KEY_ID: minio
+      AWS_SECRET_ACCESS_KEY: PRZJTG5ANZTDPWBS32UNTAYXODEUD7
+      
