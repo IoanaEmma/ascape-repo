@@ -11,3 +11,5 @@ implementation:
     image: docker.io/dokeridforioana/ascape-get-data-image:1.1.0
     fileOutputs:
       data: ASCAPE_train_model/data.zip
+    env:
+      MLFLOW_S3_ENDPOINT_URL: http://10.152.183.91:9000/
