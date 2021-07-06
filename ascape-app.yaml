@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: ascape
-        image: docker.io/dokeridforioana/flask-app-image:1.1.9
+        image: docker.io/dokeridforioana/flask-app-image:1.2.0
         ports:
           - containerPort: 3000
         env:
@@ -32,7 +32,7 @@ spec:
             name: postgressecret
             key: password
         - name: MLFLOW_S3_ENDPOINT_URL
-          value: http://10.152.183.91:9000
+          value: http://10.152.183.18:9000
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
            secretKeyRef:
@@ -44,9 +44,9 @@ spec:
             name: miniosecret
             key: password
         - name: MLFLOW_TRACKING_URI
-          value: http://10.152.183.159:5000
+          value: http://10.152.183.176:5000
         - name: ML_PIPELINE_URI
-          value: http://10.152.183.85:8888
+          value: http://10.152.183.229:8888
         resources:
           requests:
             cpu: "500m"
