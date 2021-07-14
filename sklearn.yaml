@@ -4,15 +4,14 @@ metadata:
   name: "sklearn-iris"
   namespace: "kfserving-test"
 spec:
-  default:
-    predictor:
-      sklearn:
-        storageUri: "gs://kfserving-samples/models/sklearn/iris"
-        resource: 
-          limits: 
-            cpu: 1
-            memory: 2Gi
-        requests:
-          cpu: 1
-          memory: 2Gi
+   predictor:
+     sklearn:
+       storageUri: "gs://kfserving-samples/models/sklearn/iris"
+       resource: 
+         limits: 
+           cpu: 1
+           memory: 2Gi
+       requests:
+         cpu: 1
+         memory: 2Gi
 
