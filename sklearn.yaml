@@ -10,8 +10,5 @@ spec:
          limits: 
            cpu: 1
            memory: 2Gi
-       requests:
-         cpu: 1
-         memory: 2Gi
        storageUri: "gs://kfserving-samples/models/sklearn/iris"
 
