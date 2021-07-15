@@ -8,7 +8,7 @@ spec:
     predictor:
       tensorflow:
         storageUri: "gs://kfserving-samples/models/tensorflow/flowers"
-         resources: 
+        resources: 
          limits: 
            cpu: 1
            memory: 2Gi
