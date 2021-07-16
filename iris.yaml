@@ -9,9 +9,9 @@ spec:
      sklearn:      
        resources: 
          limits: 
-           cpu: 100m
+           cpu: 25m
            memory: 1Gi
          requests:
-           cpu: 100m
+           cpu: 25m
            memory: 100Mi
        storageUri: "gs://kfserving-samples/models/sklearn/iris"
