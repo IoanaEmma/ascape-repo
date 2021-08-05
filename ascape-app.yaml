@@ -46,7 +46,7 @@ spec:
         - name: MLFLOW_TRACKING_URI
           value: http://mlflow-service:5000
         - name: ML_PIPELINE_URI
-          value: http://ml-pipeline:8888
+          value: http://10.152.183.104:8888
         resources:
           requests:
             cpu: "500m"
