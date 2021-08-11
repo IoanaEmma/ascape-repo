@@ -1,0 +1,4 @@
+{
+    "instances": [{"input_path":"M3/CypherInputData.csv",
+                   "model_path":"s3://artifact-store-bucket/1/f3b506475bc84c329cddadfa9c4fc75b/artifacts"}]
+}
