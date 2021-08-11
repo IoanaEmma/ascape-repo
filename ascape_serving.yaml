@@ -2,6 +2,7 @@ apiVersion: serving.kubeflow.org/v1beta1
 kind: InferenceService
 metadata:
   name: ascape-model
+  namespace: kfserving-test
 spec:
   predictor:
     containers:
