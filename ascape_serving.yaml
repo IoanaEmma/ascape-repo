@@ -7,7 +7,7 @@ spec:
   predictor:
     containers:
       - name: ascape-model
-        image: "dokeridforioana/ascape-predict:1.0.8"
+        image: "dokeridforioana/dummy:1.0.0"
         resources: 
          limits: 
            cpu: 25m
