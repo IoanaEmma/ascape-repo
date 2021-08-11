@@ -1,0 +1,21 @@
+apiVersion: serving.kubeflow.org/v1beta1
+kind: InferenceService
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: ascape-model
+  namespace: kfserving-test
+spec:
+  default:
+    predictor:
+      custom:
+        name: ascape-model
+        container: 
+          image: "dokeridforioana/ascape-predict:1.0.0"
+        resources: 
+         limits: 
+           cpu: 25m
+           memory: 1Gi
+         requests:
+           cpu: 25m
+           memory: 100Mi
