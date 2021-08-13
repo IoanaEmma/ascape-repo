@@ -1,16 +1,16 @@
 apiVersion: serving.kubeflow.org/v1beta1
 kind: InferenceService
 metadata:
-  name: model_m3
+  name: model-m3
   namespace: kfserving-test
 spec:
   predictor:
     containers:
-      - name: model_m3
+      - name: model-m3
         image: "docker.io/dokeridforioana/ascape-predict:1.1.3"
         env:
            - name: MODEL_NAME 
-             value: "model_m3"
+             value: "model-m3"
         resources: 
          limits: 
            cpu: 25m
