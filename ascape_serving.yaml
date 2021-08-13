@@ -10,7 +10,7 @@ spec:
         image: "docker.io/dokeridforioana/ascape-predict:1.1.3"
         env:
            - name: MODEL_NAME 
-           - value: model-M3
+           - value: "model-M3"
         resources: 
          limits: 
            cpu: 25m
