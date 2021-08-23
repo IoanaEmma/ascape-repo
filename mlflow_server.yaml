@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mlflow-deployment
+  name: mlflow
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mlflow-deployment
+      app: mlflow
   template:
     metadata:
       labels:
-        app: mlflow-deployment
+        app: mlflow
     spec:
       containers:
-      - name: mlflow-deployment
+      - name: mlflow
         image: dokeridforioana/mlflow-server:1.0.1
         imagePullPolicy: Always
         args:
         - --host=0.0.0.0
         - --port=5000
         - --backend-store-uri=postgresql://postgres:vBPeLgoN8w@my-release-postgresql:5432/mlruns
-        - --default-artifact-root=s3://artifact-store-bucket/
+        - --default-artifact-root=s3://ascape-models/
         - --workers=2
         env:
         - name: MLFLOW_S3_ENDPOINT_URL
-          value: http://minio:9000
+          value: http://minio.kubeflow.svc.local:9000
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
            secretKeyRef:
@@ -37,39 +37,39 @@ spec:
             key: password
         ports:
         - name: http
-          containerPort: 5000
+          containerPort: 5001
           protocol: TCP
         resources:
           requests:
-            cpu: "500m"
+            cpu: "100m"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mlflow-service
+  name: mlflow
 spec:
   type: NodePort
   ports:
-    - port: 5000
-      targetPort: 5000
+    - port: 5001
+      targetPort: 5001
       protocol: TCP
       name: http
   selector:
-    app: mlflow-deployment
+    app: mlflow
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: mlflow-ingress
+  name: mlflow
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.il/add-base-url: "true"
 spec:
   rules:
-  - host: mlflow-server.local
+  - host: mlflow.local
     http:
       paths:
         - backend:
-            serviceName: mlflow-service
-            servicePort: 5000
+            serviceName: mlflow
+            servicePort: 5001
           path: /
