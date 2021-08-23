@@ -14,17 +14,17 @@ spec:
     spec:
       containers:
       - name: mlflow
-        image: dokeridforioana/mlflow-server:1.0.2
+        image: dokeridforioana/mlflow-server:1.0.1
         imagePullPolicy: Always
         args:
         - --host=0.0.0.0
-        - --port=5001
+        - --port=5000
         - --backend-store-uri=postgresql://postgres:ajbwPEKwH4@my-release-postgresql:5432/mlruns
         - --default-artifact-root=s3://ascape-models/
         - --workers=2
         env:
         - name: MLFLOW_S3_ENDPOINT_URL
-          value: http://minio.kubeflow.svc.local:9000
+          value: http://minio.kubeflow:9000
         - name: AWS_ACCESS_KEY_ID
           valueFrom:
            secretKeyRef:
@@ -37,11 +37,11 @@ spec:
             key: password
         ports:
         - name: http
-          containerPort: 5001
+          containerPort: 5000
           protocol: TCP
         resources:
           requests:
-            cpu: "100m"
+            cpu: "200m"
 ---
 apiVersion: v1
 kind: Service
@@ -50,8 +50,8 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 5001
-      targetPort: 5001
+    - port: 5000
+      targetPort: 5000
       protocol: TCP
       name: http
   selector:
@@ -71,5 +71,5 @@ spec:
       paths:
         - backend:
             serviceName: mlflow
-            servicePort: 5001
+            servicePort: 5000
           path: /
