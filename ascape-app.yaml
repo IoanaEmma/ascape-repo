@@ -12,12 +12,12 @@ spec:
       labels:
         app: ascape
     spec:
+      imagePullSecrets:
+      - name: gitlab-auth
       containers:
       - name: ascape
         image: registry.gitlab.com/ascape-h2020/cloud/heredactedpatientdatamanager:latest
         imagePullPolicy: Always
-      imagePullSecrets:
-      - name: gitlab-auth
         ports:
           - containerPort: 3000
         env:
