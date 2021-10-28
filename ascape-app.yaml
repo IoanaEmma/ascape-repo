@@ -50,6 +50,8 @@ spec:
           value: http://mlflow.ascape:5000
         - name: ML_PIPELINE_URI
           value: http://ml-pipeline.kubeflow:8888
+        - name: CUSTOM_PREDICTION_URL
+          value: http://custom-serving.ascape:3001
         resources:
           requests:
             cpu: "500m"
