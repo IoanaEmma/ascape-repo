@@ -13,7 +13,7 @@ spec:
         app: ascape
     spec:
       imagePullSecrets:
-      - name: registry.gitlab.ascape-h2020.cred
+      - name: gitlab-auth
       containers:
       - name: ascape
         image: registry.gitlab.com/ascape-h2020/cloud/heredactedpatientdatamanager:test
