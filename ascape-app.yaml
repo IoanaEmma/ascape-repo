@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ascape-app-deployment
+  name: ascape
 spec:
   selector:
     matchLabels:
@@ -13,10 +13,10 @@ spec:
         app: ascape
     spec:
       imagePullSecrets:
-      - name: gitlab-auth
+      - name: registry.gitlab.ascape-h2020.cred
       containers:
       - name: ascape
-        image: registry.gitlab.com/ascape-h2020/cloud/heredactedpatientdatamanager:latest
+        image: registry.gitlab.com/ascape-h2020/cloud/heredactedpatientdatamanager:test
         imagePullPolicy: Always
         ports:
           - containerPort: 3000
@@ -61,8 +61,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: ascape-service
+  name: ascape
+  namespace: ascape
 spec:
+  type: LoadBalancer
   ports:
   - port: 3000
     targetPort: 3000
