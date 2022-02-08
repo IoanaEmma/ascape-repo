@@ -5,19 +5,22 @@ metadata:
   namespace: admin
 spec:
   configPatches:
-  - applyTo: VIRTUAL_HOST
+  - applyTo: HTTP_FILTER
     match:
       context: SIDECAR_OUTBOUND
-      routeConfiguration:
-        vhost:
-          name: ml-pipeline.kubeflow.svc.cluster.local:8888
-          route:
-            name: default
+      listener:
+        portNumber: 8888
+        filterChain:
+          filter:
+            name: "envoy.http_connection_manager"
+            subFilter:
+              name: "envoy.router"
     patch:
-      operation: MERGE
-      value:
-        request_headers_to_add:
-        - append: true
-          header:
-            key: kubeflow-userid
-            value: admin
+      operation: INSERT_BEFORE
+      value: # lua filter specification
+       name: envoy.lua
+       config:
+         inlineCode: |
+           function envoy_on_request(request_handle)
+             request_handle:headers():add("kubeflow-userid", "admin")
+           end
