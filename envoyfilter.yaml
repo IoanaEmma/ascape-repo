@@ -2,11 +2,11 @@ apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
 metadata:
   name: add-header
-  namespace: kubeflow
+  namespace: ascape
 spec:
   workloadSelector:
     labels:
-      app: app.kubernetes.io/name=kfp-api
+      app: ascape
   configPatches:
   - applyTo: HTTP_FILTER
     match:
